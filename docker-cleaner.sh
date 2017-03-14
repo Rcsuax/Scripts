@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
-CON= $(docker ps -a -q)
-IMG= $(docker images -q)
+CON=$(docker ps -a -q)
+IMG=$(docker images -q)
 
 if [ "$CON" != "" ]; then
 	echo "deleting containers: $CON"
-	docker rm "$CON"
+	docker rm $CON
 fi
 
-#[ -z STRING ]	True if the length of "STRING" is zero.
-if [ -z "$IMG " ]; then
+# [ -n STRING ] or [ STRING ] returns true if the length of the string is non-zero
+if [ -n "$IMG " ]; then
 	echo "deleting images: $IMG"
-	docker rmi "$IMG"
+	docker rmi $IMG
 fi
 
